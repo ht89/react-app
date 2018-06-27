@@ -3,20 +3,31 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
-  render() {
-    return (
-      // class cannot be used. 
-      // all elements must be wrapped inside a root element
-      <div className="App">
-        <h1>Hello world!</h1>
+    state = {
+        people: [
+            { name: 'Max', age: 28 },
+            { name: 'Manu', age: 29 },
+            { name: 'Steph', age: 26 },
+        ]
+    };
 
-        <Person />
-      </div>
-    );
+    render() {
+        return (
+            // class cannot be used. 
+            // all elements must be wrapped inside a root element
+            <div className="App">
+                <h1>Hello world!</h1>
 
-    // this is what the JSX compiles to
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hello world!'));
-  }
+                <button>Switch Name</button>
+                <Person name={this.state.people[0].name} age={this.state.people[0].age}/>
+                <Person name={this.state.people[1].name} age={this.state.people[1].name}>My Hobbies: playing games</Person>
+                <Person name={this.state.people[2].name} age={this.state.people[2].age}/>
+            </div>
+        );
+
+        // this is what the JSX compiles to
+        // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hello world!'));
+    }
 }
 
 export default App;
