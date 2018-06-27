@@ -35,6 +35,14 @@ class App extends Component {
     }
 
     render() {
+        const style = {
+            backgroundColor: 'white',
+            font: 'inherit',
+            border: '1px solid blue',
+            padding: '8px',
+            cursor: 'pointer'
+        };
+
         return (
             // class cannot be used. 
             // all elements must be wrapped inside a root element
@@ -43,17 +51,19 @@ class App extends Component {
 
                 {/* bind() used to associate 'this' inside the function to the class */}
                 {/* another way below but not recommended */}
-                <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button>
-                <Person 
-                    name={this.state.people[0].name} 
+                <button
+                    style={style}
+                    onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button>
+                <Person
+                    name={this.state.people[0].name}
                     age={this.state.people[0].age} />
-                <Person 
-                    name={this.state.people[1].name} 
+                <Person
+                    name={this.state.people[1].name}
                     age={this.state.people[1].age}
                     click={() => this.switchNameHandler('Max')}
                     changed={this.nameChangeHandler}>My Hobbies: playing games</Person>
-                <Person 
-                    name={this.state.people[2].name} 
+                <Person
+                    name={this.state.people[2].name}
                     age={this.state.people[2].age} />
             </div>
         );

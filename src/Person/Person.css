@@ -5,8 +5,9 @@ so using a class that has the same name as the component helps limit the styles 
 
 .Person {
     width: 60%;
-    margin: auto;
+    margin: 16px auto;
     border: 1px solid #eee;
+    /* no need for prefixes here because React does that automatically */
     box-shadow: 0 2px 3px #ccc;
     padding: 16px;
     text-align: center;
