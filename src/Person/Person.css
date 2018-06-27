@@ -1,0 +1,13 @@
+/* all the styles will be globally available, 
+so using a class that has the same name as the component helps limit the styles to the component */
+
+/* Need to import this file into Person.js for the styles to work */
+
+.Person {
+    width: 60%;
+    margin: auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
+}
