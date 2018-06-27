@@ -25,13 +25,18 @@ class App extends Component {
         });
     }
 
-    nameChangeHandler = (event) => {
+    nameChangeHandler = (event, id) => {
+        const personIndex = this.state.people.findIndex(p => p.id === id);
+
+        const person = {...this.state.people[personIndex]};
+
+        person.name = event.target.value;
+
+        const people = [...this.state.people];
+        people[personIndex] = person;
+
         this.setState({
-            people: [
-                { name: 'Max', age: 28 },
-                { name: event.target.value, age: 29 },
-                { name: 'Steph', age: 27 },
-            ]
+            people: people
         });
     }
 
@@ -71,7 +76,8 @@ class App extends Component {
                             name={person.name} 
                             age={person.age}
                             key={person.id} // index is not a suitable key bc it changes as the list changes
-                            click={this.deletePersonHandler.bind(this, index)} />
+                            click={this.deletePersonHandler.bind(this, index)}
+                            changed={(event) => this.nameChangeHandler(event, person.id)} />
                     })}
 
                     {/* <Person
