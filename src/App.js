@@ -10,7 +10,8 @@ class App extends Component {
             { name: 'Manu', age: 29 },
             { name: 'Steph', age: 26 },
         ],
-        otherState: 'other value'
+        otherState: 'other value',
+        showPeople: false
     };
 
     switchNameHandler = (newName) => {
@@ -34,6 +35,14 @@ class App extends Component {
         });
     }
 
+    togglePersonsHandler = () => {
+        const doesShow = this.state.showPeople;
+
+        this.setState({
+            showPeople: !doesShow
+        });
+    }
+
     render() {
         const style = {
             backgroundColor: 'white',
@@ -53,18 +62,23 @@ class App extends Component {
                 {/* another way below but not recommended */}
                 <button
                     style={style}
-                    onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button>
-                <Person
-                    name={this.state.people[0].name}
-                    age={this.state.people[0].age} />
-                <Person
-                    name={this.state.people[1].name}
-                    age={this.state.people[1].age}
-                    click={() => this.switchNameHandler('Max')}
-                    changed={this.nameChangeHandler}>My Hobbies: playing games</Person>
-                <Person
-                    name={this.state.people[2].name}
-                    age={this.state.people[2].age} />
+                    onClick={this.togglePersonsHandler}>Toggle people</button>
+
+                {this.state.showPeople ?
+                    <div>
+                        <Person
+                            name={this.state.people[0].name}
+                            age={this.state.people[0].age} />
+                        <Person
+                            name={this.state.people[1].name}
+                            age={this.state.people[1].age}
+                            click={() => this.switchNameHandler('Max')}
+                            changed={this.nameChangeHandler}>My Hobbies: playing games</Person>
+                        <Person
+                            name={this.state.people[2].name}
+                            age={this.state.people[2].age} />
+                    </div>  : null
+                }
             </div>
         );
 
