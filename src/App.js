@@ -13,11 +13,11 @@ class App extends Component {
         otherState: 'other value'
     };
 
-    switchNameHandler = () => {
+    switchNameHandler = (newName) => {
         // DONT DO THIS this.state.people[0].name = 'Jack';
         this.setState({
             people: [
-                { name: 'Maximilian', age: 28 },
+                { name: newName, age: 28 },
                 { name: 'Manu', age: 29 },
                 { name: 'Steph', age: 27 },
             ]
@@ -31,10 +31,19 @@ class App extends Component {
             <div className="App">
                 <h1>Hello world!</h1>
 
-                <button onClick={this.switchNameHandler}>Switch Name</button>
-                <Person name={this.state.people[0].name} age={this.state.people[0].age} />
-                <Person name={this.state.people[1].name} age={this.state.people[1].name}>My Hobbies: playing games</Person>
-                <Person name={this.state.people[2].name} age={this.state.people[2].age} />
+                {/* bind() used to associate 'this' inside the function to the class */}
+                {/* another way below but not recommended */}
+                <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button>
+                <Person 
+                    name={this.state.people[0].name} 
+                    age={this.state.people[0].age} />
+                <Person 
+                    name={this.state.people[1].name} 
+                    age={this.state.people[1].name}
+                    click={() => this.switchNameHandler('Max')}>My Hobbies: playing games</Person>
+                <Person 
+                    name={this.state.people[2].name} 
+                    age={this.state.people[2].age} />
             </div>
         );
 
