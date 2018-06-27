@@ -52,6 +52,26 @@ class App extends Component {
             cursor: 'pointer'
         };
 
+        let people = null;
+
+        if (this.state.showPeople) {
+            people = (
+                <div>
+                    <Person
+                        name={this.state.people[0].name}
+                        age={this.state.people[0].age} />
+                    <Person
+                        name={this.state.people[1].name}
+                        age={this.state.people[1].age}
+                        click={() => this.switchNameHandler('Max')}
+                        changed={this.nameChangeHandler}>My Hobbies: playing games</Person>
+                    <Person
+                        name={this.state.people[2].name}
+                        age={this.state.people[2].age} />
+                </div>
+            );
+        }
+
         return (
             // class cannot be used. 
             // all elements must be wrapped inside a root element
@@ -64,21 +84,8 @@ class App extends Component {
                     style={style}
                     onClick={this.togglePersonsHandler}>Toggle people</button>
 
-                {this.state.showPeople ?
-                    <div>
-                        <Person
-                            name={this.state.people[0].name}
-                            age={this.state.people[0].age} />
-                        <Person
-                            name={this.state.people[1].name}
-                            age={this.state.people[1].age}
-                            click={() => this.switchNameHandler('Max')}
-                            changed={this.nameChangeHandler}>My Hobbies: playing games</Person>
-                        <Person
-                            name={this.state.people[2].name}
-                            age={this.state.people[2].age} />
-                    </div>  : null
-                }
+                { people }
+
             </div>
         );
 
