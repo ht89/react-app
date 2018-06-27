@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
+import Person from './Person/Person';
 
 class App extends Component {
   render() {
     return (
+      // class cannot be used. 
+      // all elements must be wrapped inside a root element
       <div className="App">
         <h1>Hello world!</h1>
+
+        <Person />
       </div>
     );
 
