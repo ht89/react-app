@@ -3,13 +3,26 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+    // naming a property 'state' is not optional
     state = {
         people: [
             { name: 'Max', age: 28 },
             { name: 'Manu', age: 29 },
             { name: 'Steph', age: 26 },
-        ]
+        ],
+        otherState: 'other value'
     };
+
+    switchNameHandler = () => {
+        // DONT DO THIS this.state.people[0].name = 'Jack';
+        this.setState({
+            people: [
+                { name: 'Maximilian', age: 28 },
+                { name: 'Manu', age: 29 },
+                { name: 'Steph', age: 27 },
+            ]
+        });
+    }
 
     render() {
         return (
@@ -18,10 +31,10 @@ class App extends Component {
             <div className="App">
                 <h1>Hello world!</h1>
 
-                <button>Switch Name</button>
-                <Person name={this.state.people[0].name} age={this.state.people[0].age}/>
+                <button onClick={this.switchNameHandler}>Switch Name</button>
+                <Person name={this.state.people[0].name} age={this.state.people[0].age} />
                 <Person name={this.state.people[1].name} age={this.state.people[1].name}>My Hobbies: playing games</Person>
-                <Person name={this.state.people[2].name} age={this.state.people[2].age}/>
+                <Person name={this.state.people[2].name} age={this.state.people[2].age} />
             </div>
         );
 
