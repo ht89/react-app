@@ -70,6 +70,7 @@ class App extends Component {
                         return <Person 
                             name={person.name} 
                             age={person.age}
+                            key={index}
                             click={this.deletePersonHandler.bind(this, index)} />
                     })}
 
