@@ -6,9 +6,9 @@ class App extends Component {
     // naming a property 'state' is not optional
     state = {
         people: [
-            { name: 'Max', age: 28 },
-            { name: 'Manu', age: 29 },
-            { name: 'Steph', age: 26 },
+            { id: 1, name: 'Max', age: 28 },
+            { id: 2, name: 'Manu', age: 29 },
+            { id: 3, name: 'Steph', age: 26 },
         ],
         otherState: 'other value',
         showPeople: false
@@ -70,7 +70,7 @@ class App extends Component {
                         return <Person 
                             name={person.name} 
                             age={person.age}
-                            key={index}
+                            key={person.id} // index is not a suitable key bc it changes as the list changes
                             click={this.deletePersonHandler.bind(this, index)} />
                     })}
 
