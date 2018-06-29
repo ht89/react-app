@@ -59,7 +59,8 @@ class App extends Component {
 
     render() {
         const style = {
-            backgroundColor: 'white',
+            backgroundColor: 'green',
+            color: 'white',
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
@@ -79,20 +80,19 @@ class App extends Component {
                             click={this.deletePersonHandler.bind(this, index)}
                             changed={(event) => this.nameChangeHandler(event, person.id)} />
                     })}
-
-                    {/* <Person
-                        name={this.state.people[0].name}
-                        age={this.state.people[0].age} />
-                    <Person
-                        name={this.state.people[1].name}
-                        age={this.state.people[1].age}
-                        click={() => this.switchNameHandler('Max')}
-                        changed={this.nameChangeHandler}>My Hobbies: playing games</Person>
-                    <Person
-                        name={this.state.people[2].name}
-                        age={this.state.people[2].age} /> */}
                 </div>
             );
+
+            style.backgroundColor = 'red';
+        }
+
+        const classes = [];
+        if (this.state.people.length <= 2) {
+            classes.push('red');
+        }
+
+        if (this.state.people.length <= 1) {
+            classes.push('bold');
         }
 
         return (
@@ -100,6 +100,7 @@ class App extends Component {
             // all elements must be wrapped inside a root element
             <div className="App">
                 <h1>Hello world!</h1>
+                <p className={classes.join(' ')}>This is really working!</p>
 
                 {/* bind() used to associate 'this' inside the function to the class */}
                 {/* another way below but not recommended */}
