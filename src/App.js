@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium from 'radium'; // enable pseudo selectors in inline styles
+import Radium, { StyleRoot } from 'radium'; // enable pseudo selectors in inline styles
 
 class App extends Component {
     // naming a property 'state' is not optional
@@ -29,7 +29,7 @@ class App extends Component {
     nameChangeHandler = (event, id) => {
         const personIndex = this.state.people.findIndex(p => p.id === id);
 
-        const person = {...this.state.people[personIndex]};
+        const person = { ...this.state.people[personIndex] };
 
         person.name = event.target.value;
 
@@ -44,7 +44,7 @@ class App extends Component {
     deletePersonHandler = (personIndex) => {
         const people = [...this.state.people];
         people.splice(personIndex, 1);
-        
+
         this.setState({
             people: people
         });
@@ -79,8 +79,8 @@ class App extends Component {
             people = (
                 <div>
                     {this.state.people.map((person, index) => {
-                        return <Person 
-                            name={person.name} 
+                        return <Person
+                            name={person.name}
                             age={person.age}
                             key={person.id} // index is not a suitable key bc it changes as the list changes
                             click={this.deletePersonHandler.bind(this, index)}
@@ -106,21 +106,23 @@ class App extends Component {
         }
 
         return (
-            // class cannot be used. 
-            // all elements must be wrapped inside a root element
-            <div className="App">
-                <h1>Hello world!</h1>
-                <p className={classes.join(' ')}>This is really working!</p>
+            // StyleRoot is needed for CSS media queries to work
+            <StyleRoot>
+                {/* class cannot be used. all elements must be wrapped inside a root element  */}
+                <div className="App">
+                    <h1>Hello world!</h1>
+                    <p className={classes.join(' ')}>This is really working!</p>
 
-                {/* bind() used to associate 'this' inside the function to the class */}
-                {/* another way below but not recommended */}
-                <button
-                    style={style}
-                    onClick={this.togglePersonsHandler}>Toggle people</button>
+                    {/* bind() used to associate 'this' inside the function to the class */}
+                    {/* another way below but not recommended */}
+                    <button
+                        style={style}
+                        onClick={this.togglePersonsHandler}>Toggle people</button>
 
-                { people }
+                    {people}
 
-            </div>
+                </div>
+            </StyleRoot>
         );
 
         // this is what the JSX compiles to
