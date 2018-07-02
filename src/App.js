@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium, { StyleRoot } from 'radium'; // enable pseudo selectors in inline styles
+// import Radium, { StyleRoot } from 'radium'; // enable pseudo selectors in inline styles
 
 class App extends Component {
     // naming a property 'state' is not optional
@@ -67,10 +67,10 @@ class App extends Component {
             padding: '8px',
             cursor: 'pointer',
             // possible via Radium
-            ':hover': {
-                backgroundColor: 'lightgreen',
-                color: 'black'
-            }
+            // ':hover': {
+            //     backgroundColor: 'lightgreen',
+            //     color: 'black'
+            // }
         };
 
         let people = null;
@@ -90,10 +90,10 @@ class App extends Component {
             );
 
             style.backgroundColor = 'red';
-            style[':hover'] = {
-                backgroundColor: 'salmon',
-                color: 'black'
-            };
+            // style[':hover'] = {
+            //     backgroundColor: 'salmon',
+            //     color: 'black'
+            // };
         }
 
         const classes = [];
@@ -107,8 +107,9 @@ class App extends Component {
 
         return (
             // StyleRoot is needed for CSS media queries to work
-            <StyleRoot>
-                {/* class cannot be used. all elements must be wrapped inside a root element  */}
+                /* class cannot be used. all elements must be wrapped inside a root element  */
+
+            // <StyleRoot>
                 <div className="App">
                     <h1>Hello world!</h1>
                     <p className={classes.join(' ')}>This is really working!</p>
@@ -122,7 +123,7 @@ class App extends Component {
                     {people}
 
                 </div>
-            </StyleRoot>
+            // </StyleRoot>
         );
 
         // this is what the JSX compiles to
@@ -130,4 +131,5 @@ class App extends Component {
     }
 }
 
-export default Radium(App);
+// export default Radium(App);
+export default App;
