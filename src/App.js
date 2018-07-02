@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import Radium from 'radium'; // enable pseudo selectors in inline styles
 
 class App extends Component {
     // naming a property 'state' is not optional
@@ -64,7 +65,12 @@ class App extends Component {
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            // possible via Radium
+            ':hover': {
+                backgroundColor: 'lightgreen',
+                color: 'black'
+            }
         };
 
         let people = null;
@@ -84,6 +90,10 @@ class App extends Component {
             );
 
             style.backgroundColor = 'red';
+            style[':hover'] = {
+                backgroundColor: 'salmon',
+                color: 'black'
+            };
         }
 
         const classes = [];
@@ -118,4 +128,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Radium(App);
