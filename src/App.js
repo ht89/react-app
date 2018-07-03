@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 // import Radium, { StyleRoot } from 'radium'; // enable pseudo selectors in inline styles
 
@@ -96,13 +96,13 @@ class App extends Component {
             // };
         }
 
-        const classes = [];
+        const assignedClasses = [];
         if (this.state.people.length <= 2) {
-            classes.push('red');
+            assignedClasses.push(classes.red);
         }
 
         if (this.state.people.length <= 1) {
-            classes.push('bold');
+            assignedClasses.push(classes.bold);
         }
 
         return (
@@ -110,9 +110,9 @@ class App extends Component {
                 /* class cannot be used. all elements must be wrapped inside a root element  */
 
             // <StyleRoot>
-                <div className="App">
+                <div className={classes.App}>
                     <h1>Hello world!</h1>
-                    <p className={classes.join(' ')}>This is really working!</p>
+                    <p className={assignedClasses.join(' ')}>This is really working!</p>
 
                     {/* bind() used to associate 'this' inside the function to the class */}
                     {/* another way below but not recommended */}
