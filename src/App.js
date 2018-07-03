@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Person from './Person/Person';
-// import Radium, { StyleRoot } from 'radium'; // enable pseudo selectors in inline styles
 
 class App extends Component {
     // naming a property 'state' is not optional
@@ -59,21 +58,9 @@ class App extends Component {
     }
 
     render() {
-        const style = {
-            backgroundColor: 'green',
-            color: 'white',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer',
-            // possible via Radium
-            // ':hover': {
-            //     backgroundColor: 'lightgreen',
-            //     color: 'black'
-            // }
-        };
-
         let people = null;
+
+        let btnClass = '';
 
         if (this.state.showPeople) {
             people = (
@@ -89,11 +76,7 @@ class App extends Component {
                 </div>
             );
 
-            style.backgroundColor = 'red';
-            // style[':hover'] = {
-            //     backgroundColor: 'salmon',
-            //     color: 'black'
-            // };
+            btnClass = classes.Red;
         }
 
         const assignedClasses = [];
@@ -106,24 +89,19 @@ class App extends Component {
         }
 
         return (
-            // StyleRoot is needed for CSS media queries to work
-                /* class cannot be used. all elements must be wrapped inside a root element  */
+            /* class cannot be used. all elements must be wrapped inside a root element  */
 
-            // <StyleRoot>
-                <div className={classes.App}>
-                    <h1>Hello world!</h1>
-                    <p className={assignedClasses.join(' ')}>This is really working!</p>
+            <div className={classes.App}>
+                <h1>Hello world!</h1>
+                <p className={assignedClasses.join(' ')}>This is really working!</p>
 
-                    {/* bind() used to associate 'this' inside the function to the class */}
-                    {/* another way below but not recommended */}
-                    <button
-                        style={style}
-                        onClick={this.togglePersonsHandler}>Toggle people</button>
+                {/* bind() used to associate 'this' inside the function to the class */}
+                {/* another way below but not recommended */}
+                <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle people</button>
 
-                    {people}
+                {people}
 
-                </div>
-            // </StyleRoot>
+            </div>
         );
 
         // this is what the JSX compiles to
@@ -131,5 +109,4 @@ class App extends Component {
     }
 }
 
-// export default Radium(App);
 export default App;

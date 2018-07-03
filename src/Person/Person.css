@@ -1,6 +1,11 @@
 /* all the styles will be globally available, 
 so using a class that has the same name as the component helps limit the styles to the component */
 
+/* However, with these modifications in webpack.config, the styles are now scoped to the component
+    modules: true,
+    localIdentName: '[name]__[local]__[hash:base64:5]'
+*/
+
 /* Need to import this file into Person.js for the styles to work */
 
 .Person {
@@ -11,4 +16,10 @@ so using a class that has the same name as the component helps limit the styles 
     box-shadow: 0 2px 3px #ccc;
     padding: 16px;
     text-align: center;
+}
+
+@media (min-width: 500px) {
+    .Person {
+        width: 450px;
+    }
 }
